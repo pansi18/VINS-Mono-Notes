@@ -2,22 +2,24 @@ cmake_minimum_required(VERSION 2.8.3)
 project(pose_graph)
 
 set(CMAKE_BUILD_TYPE "Release")
-set(CMAKE_CXX_FLAGS "-std=c++11")
+set(CMAKE_CXX_FLAGS "-std=c++14")
 #-DEIGEN_USE_MKL_ALL")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall -g")
 
+set(cv3_bridge_DIR "/home/pansi/ws_vio/devel/share/cv3_bridge/cmake/")
 find_package(catkin REQUIRED COMPONENTS
     roscpp
     std_msgs
     nav_msgs
     camera_model
-    cv_bridge
+    cv3_bridge
     roslib
     )
 
+set(OpenCV_DIR "/home/pansi/open_projects/opencv-3.4.5/install_dir/share/OpenCV/")
 find_package(OpenCV)
 
-
+set(Ceres_DIR "/home/pansi/open_projects/ceres-solver-1.14.0/install_dir/usr/local/lib/cmake/ceres/")
 find_package(Ceres REQUIRED)
 
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(camera_model)
 
 set(CMAKE_BUILD_TYPE "Release")
-set(CMAKE_CXX_FLAGS "-std=c++11")
+set(CMAKE_CXX_FLAGS "-std=c++14")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -fPIC")
 
 find_package(catkin REQUIRED COMPONENTS
@@ -13,9 +13,10 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(Boost REQUIRED COMPONENTS filesystem program_options system)
 include_directories(${Boost_INCLUDE_DIRS})
 
+set(OpenCV_DIR "/home/pansi/open_projects/opencv-3.4.5/install_dir/share/OpenCV/")
 find_package(OpenCV REQUIRED)
 
-# set(EIGEN_INCLUDE_DIR "/usr/local/include/eigen3")
+set(Ceres_DIR "/home/pansi/open_projects/ceres-solver-1.14.0/install_dir/usr/local/lib/cmake/ceres/")
 find_package(Ceres REQUIRED)
 include_directories(${CERES_INCLUDE_DIRS})
 
@@ -29,9 +30,8 @@ catkin_package(
 
 include_directories(
     ${catkin_INCLUDE_DIRS}
+    "include"
     )
-
-include_directories("include")
 
 
 add_executable(Calibration 
